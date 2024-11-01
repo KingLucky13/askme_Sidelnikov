@@ -1,0 +1,30 @@
+{% load static %}
+<article class="card w-100" style="width: 18rem;">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3">
+                <div class="border mb-2" style="height: 100px;">
+                    <img src = "" alt = "Avatar" class="img-fluid">
+                </div>
+            <input class="form-control form-control-lg" type="number" value=4 placeholder=".form-control-lg" aria-label=".form-control-lg example">
+            </div>
+
+            <div class="col-9">
+                <h5 class="card-title">
+                    <a href="{% url 'question' question.id %}">{{ question.title }}</a>
+                </h5>
+                <p class="card-text">{{ question.text }}</p>
+                <div class="d-flex gap-5">
+                    <a href="#" class="card-link">Answer (2)</a>
+                    <div>
+                        Tags:
+                        <a href="#" class="card-link">Tag1</a>
+                        <a href="#" class="card-link">Tag2</a>
+                        <a href="#" class="card-link">Tag3</a>
+                        <a href="#" class="card-link">Last tag</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
