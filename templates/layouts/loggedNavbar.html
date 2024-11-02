@@ -1,0 +1,12 @@
+{% load static %}
+ <div class="d-flex gap-1">
+    <a href="{% url 'ask' %}" ><button class="btn btn-outline-success" style="height: 50px" type="submit">Ask</button></a>
+    <img src = "" alt = "Avatar" style="width: 50px;" class="img-thumbnail">
+    <div>
+        <div>
+            {{ login }}
+        </div>
+        <a href="#">Settings</a>
+        <a href="{% url 'login' %}">log out</a>
+    </div>
+ </div>

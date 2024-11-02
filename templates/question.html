@@ -1,0 +1,23 @@
+{% extends "layouts/base.html" %}
+{%  load static %}
+{%  block content %}
+    <div class="d-flex gap-3 align-items-center">
+        <h1>One Question</h1>
+    </div>
+            <div class="col-9 d-flex flex-column gap-3">
+            {% include 'layouts/questionCard.html' %}
+                {%  for answer in answers %}
+                {% include 'layouts/answerCard.html' %}
+                {% endfor %}
+
+            {%  include 'layouts/pagination.html' %}
+                <div>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Enter your answer here" rows="4"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <button class="btn btn-primary"  type="submit">Answer</button>
+                </div>
+
+            </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+{%  load static %}
+{%  block content %}
+<div class="mb-1">
+    <h1>Log in</h1>
+    <p class="text-danger">Sorry, wrong password</p>
+</div>
+<div class="col-9 d-flex flex-column gap-3">
+    <div class="mb-1">
+        <label for="loginFormControlInput" class="form-label">Login</label>
+        <input class="form-control" style="max-width: 350px"  id="loginFormControlInput" placeholder="Enter your login here">
+    </div>
+    <div class="mb-1">
+        <label for="passwordFormControlInput" class="form-label">Password</label>
+        <input type="password" class="form-control" style="max-width: 350px" id="passwordFormControlInput" placeholder="*************">
+    </div>
+    <div class="mb-1">
+        <button class="btn btn-primary"  type="submit">Register</button>
+    </div>
+    <div class="mb-1">
+        <a href="{% url 'signup' %}">create new account</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layouts/base.html" %}
+{%  load static %}
+{%  block content %}
+<div class="mb-1">
+    <h1>Registration</h1>
+    <p class="text-danger">Sorry, the email address already registered</p>
+</div>
+
+<div class="col-9">
+    <div class="d-flex flex-column gap-3">
+        <div class="mb-1">
+            <label for="loginFormControlInput" class="form-label">Login</label>
+            <input class="form-control" id="loginFormControlInput" style="max-width: 350px;" maxlength="35" placeholder="dr_pepper">
+        </div>
+        <div class="mb-1">
+            <label for="emailFormControlInput" class="form-label">Email</label>
+            <input type="email" class="form-control" id="emailFormControlInput" style="max-width: 350px;" maxlength="35" placeholder="dr.pepper@mail.ru">
+        </div>
+        <div class="mb-1">
+            <label for="nickFormControlInput" class="form-label">Nickname</label>
+            <input class="form-control" id="nickFormControlInput" style="max-width: 350px;" maxlength="35" placeholder="Dr. Pepper">
+        </div>
+        <div class="mb-1">
+            <label for="passwordFormControlInput" class="form-label">Password</label>
+            <input type="password" class="form-control" id="passswordFormControlInput" style="max-width: 350px;" maxlength="35" placeholder="*************">
+        </div>
+        <div class="mb-1">
+            <label for="repeatPassFormControlInput" class="form-label">Repeat password</label>
+            <input type="password" class="form-control" id="repeatPassFormControlInput" style="max-width: 350px;" maxlength="35" placeholder="*************">
+        </div>
+        <div class="mb-1">
+          <label for="formFile" class="form-label">Upload avatar</label>
+          <input class="form-control" type="file" id="formFile" style="max-width: 350px;">
+        </div>
+        <div class="mb-1">
+        <button class="btn btn-primary"  type="submit">Register</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
