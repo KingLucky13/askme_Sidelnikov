@@ -6,7 +6,7 @@
                 <div class="border mb-2" style="height: 100px;">
                     <img src = "" alt = "Avatar" class="img-fluid">
                 </div>
-            <input class="form-control form-control-lg" type="number" value=4 placeholder=".form-control-lg" aria-label=".form-control-lg example">
+            <input class="form-control form-control-lg" type="number" value={{ question.likes.count }} placeholder=".form-control-lg" aria-label=".form-control-lg example">
             </div>
 
             <div class="col-9">
@@ -15,13 +15,12 @@
                 </h5>
                 <p class="card-text">{{ question.text }}</p>
                 <div class="d-flex gap-5">
-                    <a href="#" class="card-link">Answer (2)</a>
+                    Answer {{ question.answer_set.count }}
                     <div>
                         Tags:
-                        <a href="#" class="card-link">Tag1</a>
-                        <a href="#" class="card-link">Tag2</a>
-                        <a href="#" class="card-link">Tag3</a>
-                        <a href="#" class="card-link">Last tag</a>
+                        {% for tag in question.tags.all %}
+                        <a href="/tag/{{ tag.name }}" class="card-link">{{tag.name}}</a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

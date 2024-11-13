@@ -1,18 +1,7 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 
-questions = []
-for i in range(0, 30):
-    questions.append({
-        'title': 'title ' + str(i),
-        'id': i,
-        'text': 'text' + str(i)
-    })
-answers = []
-for i in range(0, 30):
-    answers.append({
-        'text': 'text' + str(i)
-    })
+from app.models import Question, Answer
 
 
 def paginate(objects_list, request, per_page=10):
@@ -28,7 +17,8 @@ def paginate(objects_list, request, per_page=10):
 
 
 def index(request):
-    page = paginate(questions, request, 10)
+    new_questions = Question.objects.get_new()
+    page = paginate(new_questions, request, 10)
     return render(
         request, 'index.html',
         context={'pageTitle': 'New Questions', 'linkTitle': 'Hot Questions', 'link': '/hot', 'logged': True,
@@ -37,39 +27,29 @@ def index(request):
 
 
 def hot(request):
-    hot_questions = []
-    for i in range(1, 30):
-        hot_questions.append({
-            'title': 'hot ' + str(i),
-            'id': i,
-            'text': 'text' + str(i)
-        })
+    hot_questions = Question.objects.get_hot()
     page = paginate(hot_questions, request, 10)
     return render(
         request, 'index.html',
-        context={'pageTitle': 'Hot Questions', 'linkTitle': 'New Questions', 'link': '/', 'logged': True, 'questions': page.object_list,
+        context={'pageTitle': 'Hot Questions', 'linkTitle': 'New Questions', 'link': '/', 'logged': True,
+                 'questions': page.object_list,
                  'page_obj': page}
     )
 
 
 def tag(request, tag_name):
-    tag_questions = []
-    for i in range(0, 7):
-        tag_questions.append({
-            'title': 'tag ' + str(i),
-            'id': i,
-            'text': tag_name + str(i)
-        })
+    tag_questions = Question.objects.get_with_tag(tag_name)
     page = paginate(tag_questions, request, 5)
     return render(
         request, 'index.html',
-        context={'pageTitle': 'Tag', 'linkTitle': tag_name, 'link': '#', 'logged': True, 'questions': page.object_list,
+        context={'pageTitle': 'Tag', 'linkTitle': tag_name, 'logged': True, 'questions': page.object_list,
                  'page_obj': page}
     )
 
 
 def question(request, question_id):
-    one_question = questions[question_id]
+    one_question = Question.objects.get_one_question(question_id)
+    answers = Answer.objects.get_answers(one_question)
     page = paginate(answers, request, 5)
     return render(
         request, 'question.html',
